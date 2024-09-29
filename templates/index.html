@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wordle Solver</title>
+  </head>
+  <body>
+    <h1>Wordle Solver</h1>
+    <form action="/solve" method="POST">
+      <label for="notInTheWord">Letters not in the word:</label>
+      <input
+        type="text"
+        id="notInTheWord"
+        name="notInTheWord"
+        placeholder="e.g., abc"
+      /><br />
+
+      <label for="inTheWord">Letters in the word but wrong position:</label>
+      <input
+        type="text"
+        id="inTheWord"
+        name="inTheWord"
+        placeholder="e.g., d"
+      /><br />
+
+      <label for="correctlyPlaced">Correctly placed letters:</label>
+      <input
+        type="text"
+        id="correctlyPlaced"
+        name="correctlyPlaced"
+        placeholder="e.g., _r___"
+      /><br />
+
+      <button type="submit">Solve</button>
+    </form>
+
+    {% if words %}
+    <h2>Possible words:</h2>
+    <ul>
+      {% for word in words %}
+      <li>{{ word[0] }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>
